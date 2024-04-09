@@ -1,13 +1,13 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct ContentView: View {
+struct CounterView: View {
     
-    let store: StoreOf<ContentReducer>
+    let store: StoreOf<CounterFeature>
     
-    init(state: ContentReducer.State) {
+    init(state: CounterFeature.State) {
         self.store = .init(initialState: state, reducer: {
-            ContentReducer()
+            CounterFeature()
         })
     }
     
@@ -29,7 +29,7 @@ struct ContentView: View {
 }
 
 @Reducer
-struct ContentReducer {
+struct CounterFeature {
     
     @ObservableState
     struct State {
@@ -56,5 +56,5 @@ struct ContentReducer {
 }
 
 #Preview {
-    ContentView(state: .init())
+    CounterView(state: .init())
 }
