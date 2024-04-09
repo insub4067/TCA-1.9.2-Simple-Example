@@ -5,13 +5,6 @@ struct CounterView: View {
     
     let store: StoreOf<CounterFeature>
     
-    init(state: CounterFeature.State) {
-        self.store = .init(initialState: state, reducer: {
-            CounterFeature()
-        })
-    }
-    
-    
     var body: some View {
         WithPerceptionTracking {
             VStack {
@@ -51,10 +44,6 @@ struct CounterFeature {
                 state.count -= 1
                 return .none
             }
-        }._printChanges()
+        }
     }
-}
-
-#Preview {
-    CounterView(state: .init())
 }
