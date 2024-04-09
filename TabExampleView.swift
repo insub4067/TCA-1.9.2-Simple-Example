@@ -3,11 +3,12 @@ import ComposableArchitecture
 
 struct TabExampleView: View {
     
-    var store: StoreOf<TabFeature> {
-        let state = TabFeature.State()
-        return .init(initialState: state) {
+    let store: StoreOf<TabFeature>
+    
+    init(state: TabFeature.State = .init()) {
+        self.store = .init(initialState: state, reducer: {
             TabFeature()
-        }
+        })
     }
     
     var body: some View {
